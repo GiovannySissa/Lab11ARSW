@@ -12,9 +12,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body >
-		
-		<form ng-controller="plan_control">
-			<select ng-model="blueprint">
+		<div ng-controller="plan_control">
+		<form >
+			
+			<select ng-model="nameblueprint">
 				<option  ng-repeat="o in listnames" value="{{o}}">
 					{{o}}
 				</option>
@@ -22,9 +23,19 @@
 			 <button type="button" class="btn btn-warning"  ng-click="loadData()">
                 Cargar planos
               </button>
-			
+              
+              <button type="button" class="btn btn-warning"  ng-click="drawBluePrint()">
+                Draw
+              </button> <br>
+              
+             
+			<canvas id="canvas" style="border:2px solid black;" width="800" height="600">
+				
+			</canvas>
 		</form>
-                       
-        
+         <svg  id = "svg" width="800" height="600"> 
+				
+         </svg>               
+        </div>
     </body>
 </html>
