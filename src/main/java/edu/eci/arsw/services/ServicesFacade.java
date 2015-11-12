@@ -22,8 +22,8 @@ public class ServicesFacade {
     private static final Map<String,Blueprint> dummyBluePrints=new LinkedHashMap<>();
     
     static{
-        dummyBluePrints.put("larecta", new Blueprint("larecta",new Point[]{new Point(10,10),new Point(20,20)}));
-        dummyBluePrints.put("rayon",new Blueprint("rayon",new Point[]{new Point(30,30),
+        dummyBluePrints.put("larecta", new Blueprint("larecta",new Point[]{new Point(10,10),new Point(50,50)}));
+        dummyBluePrints.put("rayon",new Blueprint("rayon",new Point[]{new Point(60,60),
                                                       new Point(300,300),
                                                       new Point(450,550)
         }));
