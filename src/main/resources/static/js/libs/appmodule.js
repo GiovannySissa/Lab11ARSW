@@ -57,7 +57,7 @@
 				}
 				
 				var elementoSvg= document.getElementById("svg");
-				var poligono =document.createElementNS("http://www.w3.org/2000/svg","polygon");
+				var poligono =document.createElementNS("http://www.w3.org/2000/svg","polyline");
 				poligono.setAttribute("points",puntos);
 				poligono.setAttribute("style","stroke:red;stroke-width:1");
 				elementoSvg.appendChild(poligono);
@@ -68,6 +68,7 @@
 				alert("The petition has failed. HTTP Status:"+status);
 			});
 		}; 
+		$scope.loadData();
 		 
 	});
 	
