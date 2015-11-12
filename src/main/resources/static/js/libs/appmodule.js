@@ -28,10 +28,13 @@
 		$scope.drawBluePrint = function(){
 			var cnv= document.getElementById("canvas");
 			var ctx = cnv.getContext("2d");
-			$scope.selectedBlueprint();
+			response=$scope.selectedBlueprint(cnv,ctx);
+			
+			
+			
 		}; 
 		 
-		$scope.selectedBlueprint = function(){
+		$scope.selectedBlueprint = function(cnv,ctx){
 			alert($scope.nameblueprint);
 			var configList = {
 				method: "GET",
@@ -40,9 +43,14 @@
 			var response=$http(configList);
 
 			response.success(function(data, status, headers, config) {
-				alert("respose");
+				//alert("respose");
 				$scope.blueprint = data; 
-				alert($scope.blueprint.name);
+				ctx.beginPath();
+				ctx.moveTo($scope.blueprint.points[0].x, $scope.blueprint.points[0].y);
+				for (i=1;i<$scope.blueprint.points.length;i++){
+				ctx.lineTo($scope.blueprint.points[i].x,$scope.blueprint.points[i].y);
+				ctx.stroke();
+			} 
 			});
 
 			response.error(function(data, status, headers, config) {
