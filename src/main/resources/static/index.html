@@ -20,18 +20,36 @@
 					{{o}}
 				</option>
 			</select>
-			 <button type="button" class="btn btn-warning"  ng-click="loadData()">
-                Cargar planos
-              </button>
+               
               
-              <button type="button" class="btn btn-warning"  ng-click="drawBluePrint()">
-                Draw
-              </button> <br>
-              
-             
-			<canvas id="canvas" style="border:2px solid black;" width="800" height="600">
+                        <table>
+                        <tr>
+                            <td>
+                                 <button type="button" class="btn btn-warning"  ng-click="loadData()">
+                                    Cargar planos
+                                  </button>
+
+                                  <button type="button" class="btn btn-warning"  ng-click="drawBluePrint()">
+                                    Draw
+                                  </button> 
+                                    <button type="button" class="btn btn-warning"  ng-click="limpiarAll()">
+                                    Limpiar lienzos
+                                  </button> 
+                                    <br>
+                                  <canvas id="canvas" style="border:2px solid black;" width="600" height="600">
+				
+                                    </canvas>
+                            </td>
+                            <td>
+                                Dibujar figura nueva<br>
+                                <canvas id="canvasDraw" style="border:2px solid black;" width="600" height="600">
 				
 			</canvas>
+                            </td>
+                        
+			
+                            </tr>
+                        </table>
 		</form>
          <svg  id = "svg" width="800" height="600"> 
 				<!--<polygon id="svgp" points="" style="fill:lime;stroke:purple;stroke-width:1" />-->

@@ -11,7 +11,7 @@
 			 
 			var configList = {
 				method: "GET",
-				url: "http://10.2.67.82:8080/blueprints"
+				url: "http://localhost:8080/blueprints"
 			};
 
 			var response=$http(configList);
@@ -32,13 +32,30 @@
 			
 			
 			
+		};
+                $scope.limpiarAll = function(){
+			var cnv= document.getElementById("canvas");
+			var ctx = cnv.getContext("2d");
+                        var cnvD= document.getElementById("canvasDraw");
+			var ctxD = cnvD.getContext("2d");
+                        var len = document.getElementsByName("figuras").length;
+                        var svg=document.getElementById("svg");
+			ctx.clearRect(0, 0, cnv.width, cnv.height);
+                        ctxD.clearRect(0, 0, cnvD.width, cnvD.height);
+                        
+                        for (i=0;i<len;i++){
+                            svg.removeChild(document.getElementsByName("figuras")[0]);
+                        }
+			
+			
+			
 		}; 
 		 
 		$scope.selectedBlueprint = function(cnv,ctx){
 			
 			var configList = {
 				method: "GET",
-				url: "http://10.2.67.82:8080/blueprints/" + $scope.nameblueprint
+				url: "http://localhost:8080/blueprints/" + $scope.nameblueprint
 			};
 			var response=$http(configList);
 		
@@ -59,6 +76,7 @@
 				var elementoSvg= document.getElementById("svg");
 				var poligono =document.createElementNS("http://www.w3.org/2000/svg","polyline");
 				poligono.setAttribute("points",puntos);
+                                poligono.setAttribute("name","figuras");
 				poligono.setAttribute("style","stroke:red;stroke-width:1");
 				elementoSvg.appendChild(poligono);
 				//document.getElementById("svg").setAttribute("points",puntos);	 
