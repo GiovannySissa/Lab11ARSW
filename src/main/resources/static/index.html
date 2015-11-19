@@ -4,8 +4,7 @@
     <head >
         <script src="js/libs/angular.min.js"></script>
         <script src="js/libs/angular-route.js"></script>
-        <script src="js/libs/appmodule.js"></script>
-        
+        <script src="js/libs/appmodule.js"></script>        
          <link rel="stylesheet" href="css/bootstrap.css">
         <title>Blueprints</title>
         <meta charset="UTF-8">
@@ -13,43 +12,36 @@
     </head>
     <body >
 		<div ng-controller="plan_control">
-		<form >
-			
+		<form >			
 			<select ng-model="nameblueprint">
 				<option  ng-repeat="o in listnames" value="{{o}}">
 					{{o}}
 				</option>
-			</select>
-               
-              
-                        <table>
-                        <tr>
-                            <td>
-                                 <button type="button" class="btn btn-warning"  ng-click="loadData()">
-                                    Cargar planos
-                                  </button>
+			</select>                   
+        <table>
+          <tr>
+              <td>             
+                  <button type="button" class="btn btn-warning"  ng-click="loadData()">
+                      Cargar planos
+                    </button>
 
-                                  <button type="button" class="btn btn-warning"  ng-click="drawBluePrint()">
-                                    Draw
-                                  </button> 
-                                    <button type="button" class="btn btn-warning"  ng-click="limpiarAll()">
-                                    Limpiar lienzos
-                                  </button> 
-                                    <br>
-                                  <canvas id="canvas" style="border:2px solid black;" width="600" height="600">
-				
-                                    </canvas>
-                            </td>
-                            <td>
-                                Dibujar figura nueva<br>
-                                <canvas id="canvasDraw" style="border:2px solid black;" width="600" height="600">
-				
-			</canvas>
-                            </td>
-                        
-			
-                            </tr>
-                        </table>
+                    <button type="button" class="btn btn-warning"  ng-click="drawBluePrint()">
+                      Draw
+                    </button> 
+                      <button type="button" class="btn btn-warning"  ng-click="limpiarAll()">
+                      Limpiar lienzos
+                    </button> 
+                      <br>
+                    <canvas id="canvas" style="border:2px solid black;" width="600" height="600"> </canvas>
+              </td>
+              <td>
+                  Dibujar figura nueva<br>
+                  <canvas id="canvasDraw" style="border:2px solid black;" width="600" height="600"> </canvas>
+              </td>
+          
+
+          </tr>
+        </table>
 		</form>
          <svg  id = "svg" width="800" height="600"> 
 				<!--<polygon id="svgp" points="" style="fill:lime;stroke:purple;stroke-width:1" />-->
