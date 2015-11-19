@@ -91,6 +91,7 @@
 
 
 
+
 		//Create a mouse events
 
 		function viewMsj(canvas, msj){
@@ -110,7 +111,7 @@
 		var canvasDraw 	= document.getElementById('canvasDraw');
 		var context		= canvasDraw.getContext('2d'); 
 
-		canvasDraw.addEventListener('mousedown', function (e) {
+		canvasDraw.addEventListener('mousemove', function (e) {
     		var pos = getMousePos(canvasDraw, e); //position mouse
     		var msj = "Duvan Gay "+pos.x +" "+ pos.y; 
     		viewMsj(canvasDraw, msj);
@@ -124,35 +125,6 @@
 	
 })();
 
-
-
-/*
-<script>
-      function writeMessage(canvas, message) {
-        var context = canvas.getContext('2d');
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.font = '18pt Calibri';
-        context.fillStyle = 'black';
-        context.fillText(message, 10, 25);
-      }
-      function getMousePos(canvas, evt) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-          x: evt.clientX - rect.left,
-          y: evt.clientY - rect.top
-        };
-      }
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
-
-      canvas.addEventListener('mousemove', function(evt) {
-        var mousePos = getMousePos(canvas, evt);
-        var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
-        writeMessage(canvas, message);
-      }, false);
-    </script>
-
-*/
 
 
 
