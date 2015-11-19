@@ -11,7 +11,9 @@ public class Blueprint {
     private List<Point> points=null;
     
     String name=null;
-    
+    public Blueprint(){
+        
+    }
     public Blueprint(String name,Point[] pnts){
         this.name=name;
         points=Arrays.asList(pnts);
@@ -26,7 +28,12 @@ public class Blueprint {
         return name;
     }
 
-    
+    public void setPoints(List<Point> points){
+        this.points=points;
+    }
+    public void setName(String name){
+        this.name=name;
+    }
     
     public List<Point> getPoints() {
         return points;
