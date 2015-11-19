@@ -1,9 +1,9 @@
 (function () {
     var app = angular.module('modone', []);
-    
+    var paint = undefined; 
 
     app.controller('plan_control', 
-    function($scope,$http){
+    function($scope,$http, $log){
 		 $scope.listnames=[];
 		 $scope.nameblueprint="";
 		 $scope.blueprint = { points : "points", name : "name"
@@ -93,6 +93,9 @@
 
 
 		//Create a mouse events
+		var canvasDraw 	= document.getElementById('canvasDraw');
+		var context		= canvasDraw.getContext('2d'); 
+		var  pos = canvas.getBoundingClientRect();
 
 		function viewMsj(canvas, msj){
 			
@@ -108,16 +111,79 @@
       }
 
 
-		var canvasDraw 	= document.getElementById('canvasDraw');
-		var context		= canvasDraw.getContext('2d'); 
+		
+		
+		canvasDraw.addEventListener('mousedown', function (e) {
+    		pos = getMousePos(canvasDraw, e); //position mouse
+    		paint = true;
+  			addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, false);
 
-		canvasDraw.addEventListener('mousemove', function (e) {
-    		var pos = getMousePos(canvasDraw, e); //position mouse
+  			redraw();
     		var msj = "Duvan Gay "+pos.x +" "+ pos.y; 
     		viewMsj(canvasDraw, msj);
-    		
-		},true);
+    		//$log.debug(paint);
+		});
+  			
 
+		canvasDraw.addEventListener('mousemove', function(e){
+			//$log.debug(paint);
+			if(paint){
+				//viewMsj(canvasDraw, "SDDFFH "+ paint);
+				viewMsj(canvasDraw, "msj" + pos.x + " "+ pos.y);
+   				addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+    			redraw();
+  			}
+		});
+
+		canvasDraw.addEventListener('mouseup', function (e2) {			
+			paint = false;
+			    
+			    redraw();
+		});
+
+		
+		canvasDraw.addEventListener('mouseleave', function (e3) {
+			paint = false;
+		});		
+
+
+		// ------------------------------------------------------------
+		//save click position 
+
+		
+		
+		
+
+		var clX = new Array();	// click x	
+		var clY = new Array();	// click y
+		var clDr = new Array(); // click drag
+
+		//var paint ; 
+		function addClick(x, y , dragging){
+			clX.push(x);
+			clY.push(y);
+			clDr.push(dragging);			
+			$log.debug(clX, clY);
+		}
+
+		function redraw(){
+  			context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas		  
+		  	context.strokeStyle = "#659b41";
+		  	context.lineJoin = "round";
+		  	context.lineWidth = 51;
+			
+		  	for(var i=0; i < clX.length; i++) {		
+		    	context.beginPath();
+		    	if(clDr[i] && i){
+		      		context.moveTo(clX[i-1], clY[i-1]);
+		     	}else{
+		       		context.moveTo(clX[i]-1, clY[i]);
+		     	}
+		     	context.lineTo(clX[i], clY[i]);
+		     	context.closePath();
+		     	context.stroke();
+  			}
+  		}
 
 		$scope.loadData();
 		 
